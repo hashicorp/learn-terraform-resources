@@ -1,4 +1,4 @@
-resource "random_pet" "sg" {}
+resource "random_pet" "name" {}
 
 resource "aws_instance" "web" {
   ami                    = "ami-a0cfeed8"
@@ -6,7 +6,7 @@ resource "aws_instance" "web" {
   user_data              = file("init-script.sh")
 
   tags = {
-    Name = random_pet.sg.id
+    Name = random_pet.name.id
   }
 }
 
