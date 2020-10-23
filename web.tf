@@ -1,4 +1,4 @@
-resource "random_pet" "sg" {}
+resource "random_pet" "name" {}
 
 resource "aws_instance" "web" {
   ami                    = "ami-a0cfeed8"
@@ -7,12 +7,12 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = [aws_security_group.web-sg.id]
 
   tags = {
-    Name = random_pet.sg.id
+    Name = random_pet.name.id
   }
 }
 
 resource "aws_security_group" "web-sg" {
-  name = "${random_pet.sg.id}-sg"
+  name = "${random_pet.name.id}-sg"
   ingress {
     from_port   = 80
     to_port     = 80
