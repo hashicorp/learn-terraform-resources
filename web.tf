@@ -28,6 +28,10 @@ resource "aws_security_group" "web-sg" {
   }
 }
 
-output "web-address" {
+output "domain-name" {
   value = aws_instance.web.public_dns
+}
+
+output "application-url" {
+  value = "${aws_instance.web.public_dns}/index.php"
 }
