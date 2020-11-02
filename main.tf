@@ -1,3 +1,9 @@
+provider "aws" {
+  region = "us-west-2"
+}
+
+provider "random" {}
+
 resource "random_pet" "sg" {}
 
 resource "aws_instance" "web" {
