@@ -1,4 +1,3 @@
-
 provider "aws" {
   region = "us-west-2"
 }
@@ -15,12 +14,4 @@ resource "aws_instance" "web" {
   tags = {
     Name = random_pet.name.id
   }
-}
-
-output "domain-name" {
-  value = aws_instance.web.public_dns
-}
-
-output "application-url" {
-  value = "${aws_instance.web.public_dns}/index.php"
 }
