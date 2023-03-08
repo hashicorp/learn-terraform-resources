@@ -3,11 +3,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 yum update -y
-yum -y remove httpd
-yum -y remove httpd-tools
-yum install -y httpd24 php72 mysql57-server php72-mysqlnd
-service httpd start
-chkconfig httpd on
+amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
+yum install -y httpd mariadb-server
+systemctl start httpd
+systemctl enable httpd
 
 usermod -a -G apache ec2-user
 chown -R ec2-user:apache /var/www
